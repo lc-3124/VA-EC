@@ -161,7 +161,7 @@ void VaEcControl::high_light()
     printf("\033[7m");
 }
 
-// set the color 
+// set the color (8 Color  
 const char* VaEcControl::_set_color(int front, int background)
 {
     static char escapeCommand[64];
@@ -178,3 +178,36 @@ void VaEcControl::set_color(int front, int background)
     printf("\033[%dm\033[%dm", front, background);
 }
 
+// set the color (16 Color  
+const char* VaEcControl::_set_color16(int front, int background)
+{
+    int len = 0 ;
+    static char escapeCommand[64];
+
+    len = snprintf(escapeCommand, sizeof(escapeCommand), "\033[%d;%dm\033[%d;%dm", 
+            (front > 100 )? 1 : 0 ,
+            front - 100 * ((front > 100)? 1 : 0 ),
+            (background > 100 )? 1 : 0 ,
+            background - 100 * ((background > 100)? 1 : 0 )
+            );
+
+    
+    if (len < 0 || len >= 64)
+    {
+        throw "VaEcControl::_set_color:escapeCommand overflowed";
+        return nullptr;
+    }
+
+    return escapeCommand;
+}
+
+void VaEcControl::set_color16(int front, int background)
+{
+
+    printf("\033[%d;%dm\033[%d;%dm", 
+            (front > 100 )? 1 : 0 ,
+            front - 100 * ((front > 100)? 1 : 0 ),
+            (background > 100 )? 1 : 0 ,
+            background - 100 * ((background > 100)? 1 : 0 )
+            );
+}

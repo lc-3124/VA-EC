@@ -1,4 +1,7 @@
 #pragma once
+
+#include "ColorEnum.hpp"
+
 /*
  * This is a class that contains functions used to manage some Escape characters.
  * It is designed to provide useful functionality for terminal control.
@@ -14,28 +17,6 @@ enum
     CUR_RIGHT = 1, 
     CUR_UP = 3,
     CUR_DOWN = 4
-};
-// Color definitions
-// Although it may not be sufficient to support only 8 colors currently,
-// other work needs to be completed first.
-enum
-{
-    FRONT_BLACK = 30,
-    FRONT_RED = 31,
-    FRONT_GREEN = 32,
-    FRONT_YELLOW = 33,
-    FRONT_BLUE = 34,
-    FRONT_PURPLE = 35,
-    FRONT_DEEP_GREEN = 36,
-    FRONT_WHITE = 37,
-    BACKGROUND_BLACK = 40,
-    BACKGROUND_RED = 41,
-    BACKGROUND_GREEN = 42,
-    BACKGROUND_YELLOW = 43,
-    BACKGROUND_BLUE = 44,
-    BACKGROUND_PURPLE = 45,
-    BACKGROUND_DEEP_GREEN = 46,
-    BACKGROUND_WHITE = 47
 };
 
 class VaEcControl
@@ -91,6 +72,14 @@ public:
     // Remember to reset before returning to system , you know why  
     static const char* _set_color(int front, int background);
     static void set_color(int front, int background);
+
+    static const char* _set_color16(int front, int background);
+    static void set_color16(int front, int background);
+
+    /*
+     * Functions related to effect cotrol.
+     */
+
 };
 
 typedef VaEcControl vaec;
