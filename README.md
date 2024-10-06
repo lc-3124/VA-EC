@@ -1,4 +1,4 @@
-# Ansi Escape Character Utility Class 
+# vaec - Ansi Escape Character Utility Class 
  
 ## 简介（Introduction）
  
@@ -23,6 +23,8 @@
  
 - 启用或禁用高亮显示（Enable or disable highlighting）：分别使用 high_light() 和 un_high_light() 函数。
 - 设置文本和背景颜色（Set the text and background colors）： set_color(int front, int background) 函数可以设置文本前景色和背景色。使用时需注意在返回系统前进行重置。
+
+### 其他可以阅读源码了解
  
 ## 当前存在的问题（Current Issues）
  
@@ -36,18 +38,18 @@
  
 ### 颜色支持有限（Limited Color Support）
  
-目前仅支持 8 种颜色，对于一些需要更丰富颜色表现的场景可能不够。
+目前添加到了16种颜色，对于一些需要更丰富颜色表现的场景可能不够,不过添加更多颜色支持已经在做了
  
 ## 关于文档的说明（Note on Documentation）
  
-这份文档是由人工智能（AI）生成的(但是我有好好检查这个文档啦）。由于作者目前学业繁忙，没有很多时间花在项目上，因此可能存在一些不完善的地方。随着时间的推移，作者会在学业之余逐步完善
+由于作者目前学业繁忙，没有很多时间花在项目上，因此可能存在一些不完善的地方，文档也相应不足，。随着时间的推移，作者会在学业之余逐步完善
  
-未来计划（Future Plans）
+## 未来计划（Future Plans）
  
 - 加入其他的 ANSI 转义字符功能。
 - 解决命名问题，提高代码的可读性和可维护性。
 - 完善文档，提供详细的使用说明和示例。
-- 考虑扩展颜色支持，以满足更多的需求。
+- 继续扩展颜色支持，以满足更多的需求。
  
 ## 使用方法（Usage）
  
