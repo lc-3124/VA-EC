@@ -29,56 +29,73 @@ public:
      */
     // Clear the entire screen.
     static const char* _clear();
-    static void clear();
+    static void         clear();
 
     // Clear the area from the cursor's position to the end of the line.
     static const char* _clear_line();
-    static void clear_line();
+    static void         clear_line();
 
     /*
      * Functions related to cursor actions.
      */
     // Move the cursor to the specified position (h, w).
     static const char* _cur_moveto(int h, int w);
-    static void cur_moveto(int h, int w);
+    static void         cur_moveto(int h, int w);
 
     // Move the cursor in a given direction by a specified distance.
     // e.g. cout << _move(LEFT, 10);
     static const char* _cur_move(int dr, int ds);
-    static void cur_move(int dr, int ds);
+    static void         cur_move(int dr, int ds);
 
     // Reset the cursor to its default position.
     static const char* _cur_reset();
-    static void cur_reset();
+    static void         cur_reset();
 
     // Hide the cursor.
     static const char* _cur_hide();
-    static void cur_hide();
+    static void         cur_hide();
 
     // Show the cursor.
     static const char* _cur_show();
-    static void cur_show();
+    static void         cur_show();
 
     /*
      * Functions related to color control.
      */
-    // Enable or disable highlighting.
-    static const char* _high_light();
-    static void high_light(); 
-    static const char* _un_high_light();
-    static void un_high_light();
-
     // Set the text and background colors.
     // Remember to reset before returning to system , you know why  
-    static const char* _set_color(int front, int background);
-    static void set_color(int front, int background);
+    static const char* _set_color    (int front, int background);
+    static void         set_color    (int front, int background);
 
-    static const char* _set_color16(int front, int background);
-    static void set_color16(int front, int background);
+    static const char* _set_color16  (int front, int background);
+    static void         set_color16  (int front, int background);
 
+    static const char* _set_color256 (int front, int background);
+    static void         set_color256 (int front, int background);
+    
+    static const char* _set_colorReal(int R ,int B ,int G);
+    static void         set_colorReal(int R, int B ,int G);
+    
     /*
      * Functions related to effect cotrol.
      */
+    // Enable or disable highlighting.
+    static const char* _high_light();
+    static void         high_light(); 
+    static const char* _un_high_light();
+    static void         un_high_light();
+
+    // Underline or disable 
+    static const char*  _underline();
+    static void          underline();
+
+    // Bright (This funcation is included in set_color16() ) or disable 
+    // It may occurs effect on the 16color setting
+    static const char*  _bright();
+    static void          bright();
+    
+    static const char*  _un_bright();
+    static void          un_bright();
 
 };
 

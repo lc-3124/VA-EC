@@ -184,14 +184,8 @@ const char* VaEcControl::_set_color16(int front, int background)
     int len = 0 ;
     static char escapeCommand[64];
 
-    len = snprintf(escapeCommand, sizeof(escapeCommand), "\033[%d;%dm\033[%d;%dm", 
-            (front > 100 )? 1 : 0 ,
-            front - 100 * ((front > 100)? 1 : 0 ),
-            (background > 100 )? 1 : 0 ,
-            background - 100 * ((background > 100)? 1 : 0 )
-            );
+    len = snprintf(escapeCommand, sizeof(escapeCommand),"\033[38;5;%dm\033[48;5;%dm",front,background);
 
-    
     if (len < 0 || len >= 64)
     {
         throw "VaEcControl::_set_color:escapeCommand overflowed";
@@ -203,11 +197,5 @@ const char* VaEcControl::_set_color16(int front, int background)
 
 void VaEcControl::set_color16(int front, int background)
 {
-
-    printf("\033[%d;%dm\033[%d;%dm", 
-            (front > 100 )? 1 : 0 ,
-            front - 100 * ((front > 100)? 1 : 0 ),
-            (background > 100 )? 1 : 0 ,
-            background - 100 * ((background > 100)? 1 : 0 )
-            );
+    printf("\033[38;5;%dm\033[48;5;%dm",front,background);
 }
