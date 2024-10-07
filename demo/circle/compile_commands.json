@@ -1,0 +1,28 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/x86_64-linux-gnu-g++-10",
+      "-c",
+      "main.cpp",
+      "-I../../",
+      "-o",
+      "demo"
+    ],
+    "directory": "/home/lc3124/clone/VA-EC/demo/circle",
+    "file": "/home/lc3124/clone/VA-EC/demo/circle/main.cpp",
+    "output": "/home/lc3124/clone/VA-EC/demo/circle/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/x86_64-linux-gnu-g++-10",
+      "-c",
+      "../../src/VaEcControl.cpp",
+      "-I../../",
+      "-o",
+      "demo"
+    ],
+    "directory": "/home/lc3124/clone/VA-EC/demo/circle",
+    "file": "/home/lc3124/clone/VA-EC/demo/circle/../../src/VaEcControl.cpp",
+    "output": "/home/lc3124/clone/VA-EC/demo/circle/../../src/VaEcControl.o"
+  }
+]

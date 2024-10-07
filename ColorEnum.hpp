@@ -46,3 +46,4 @@ namespace _16color
         BRIGHT_WHITE =17
     };
 }
+
