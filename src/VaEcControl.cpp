@@ -188,7 +188,7 @@ const char* VaEcControl::_set_color16(int front, int background)
 
     if (len < 0 || len >= 64)
     {
-        throw "VaEcControl::_set_color:escapeCommand overflowed";
+        throw "VaEcControl::_set_color16:escapeCommand overflowed";
         return nullptr;
     }
 
@@ -199,3 +199,52 @@ void VaEcControl::set_color16(int front, int background)
 {
     printf("\033[38;5;%dm\033[48;5;%dm",front,background);
 }
+
+//set the color (256 Color
+const char* VaEcControl::_set_color256(int front,int background)
+{ 
+    int len = 0 ;
+    static char escapecommand[64];
+
+    len = snprintf(escapecommand, sizeof(escapecommand),"\033[38;5;%dm\033[48;5;%dm",front,background);
+
+    if (len < 0 || len >= 64)
+    {
+        throw "vaeccontrol::_set_color256:escapecommand overflowed";
+        return nullptr;
+    }
+
+    return escapecommand;
+}
+
+void VaEcControl::set_color256(int front, int background)
+{
+    printf("\033[38;5;%dm\033[48;5;%dm",front,background);
+}
+
+//set the color (RGB
+const char* VaEcControl::_set_front_color_RGB(int R ,int G ,int B)
+{
+    int len = 0 ;
+    static char escapecommand[64];
+
+    len = snprintf(escapecommand, sizeof(escapecommand),"\033[38;2;%d,%d,%dm",R,G,B);
+
+    if (len < 0 || len >= 64)
+    {
+        throw "vaeccontrol::_set_front_color:escapecommand overflowed";
+        return nullptr;
+    }
+
+    return escapecommand;
+
+      
+}
+
+void VaEcControl::set_front_color_RGB(int R ,int G ,int B)
+{
+    printf("\033[38;2;%d,%d,%dm",R,G,B);
+}
+    //My console don't support RGB ,So I don't like to code it
+
+//

@@ -36,14 +36,14 @@ namespace _16color
         PURPLE = 5,
         DEEP_GREEN = 6,
         WHITE = 7,
-        BRIGHT_BLACK =10,
-        BRIGHT_RED =11,
-        BRIGHT_GREEN =12,
-        BRIGHT_YELLOW =13,
-        BRIGHT_BLUE =14,
-        BRIGHT_PURPLE =15,
-        BRIGHT_DEEP_GREEN =16,
-        BRIGHT_WHITE =17
+        BRIGHT_BLACK =8,
+        BRIGHT_RED =9,
+        BRIGHT_GREEN =10,
+        BRIGHT_YELLOW =11,
+        BRIGHT_BLUE =12,
+        BRIGHT_PURPLE =13,
+        BRIGHT_DEEP_GREEN =14,
+        BRIGHT_WHITE =15
     };
 }
 

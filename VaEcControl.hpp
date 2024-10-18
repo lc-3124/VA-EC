@@ -73,8 +73,12 @@ public:
     static const char* _set_color256 (int front, int background);
     static void         set_color256 (int front, int background);
     
-    static const char* _set_colorReal(int R ,int B ,int G);
-    static void         set_colorReal(int R, int B ,int G);
+    //My console is not supporting RGB ,so I don't know if it can work
+    static const char* _set_background_color_RGB(int R ,int B ,int G);
+    static void         set_background_color_RGB(int R, int B ,int G);
+    
+    static const char* _set_front_color_RGB(int R ,int B ,int G);
+    static void         set_front_color_RGB(int R, int B ,int G);
     
     /*
      * Functions related to effect cotrol.
@@ -88,6 +92,8 @@ public:
     // Underline or disable 
     static const char*  _underline();
     static void          underline();
+    static const char*  _un_underline();
+    static void          un_underline();
 
     // Bright (This funcation is included in set_color16() ) or disable 
     // It may occurs effect on the 16color setting
