@@ -1,60 +1,152 @@
-# vaec - Ansi Escape Character Utility Class 
+# vaec - Ansi Escape Character Utility Class
  
-## 简介（Introduction）
+## Introduction
  
-这是一个用 C++编写的类，旨在方便地组合和输出各种有趣的 ANSI 转义字符。它是在我准备另一个项目 VAWK 时创建的，感觉复用性还不错。目前，它包含了输出颜色和移动光标的功能。之后会加入其他功能。不过，目前这些代码的命名存在很大问题。
+This is a class written in C++. It is designed to conveniently combine and output various interesting ANSI escape characters. It was created when preparing for another project called VAWK and has good reusability. Currently, it includes functions for outputting colors and moving the cursor. More functions will be added later. However, there are currently significant naming issues with this code.
  
-## 特性（Features）
+## 如果你是中国人，请看这份文档 https://github.com/lc-3124/VA-EC/README_zh.md
+## Features
  
-### 屏幕操作相关功能（Functions related to screen actions）
+It's too troublesome. Just look at the source code. The function list is very clear.
  
-- 清屏（Clear the entire screen）： clear() 函数可以清除整个屏幕。
-- 清除当前行从光标位置到末尾的内容（Clear the area from the cursor's position to the end of the line）： clear_line() 函数可实现此功能。
+### Function List:
  
-### 光标操作相关功能（Functions related to cursor actions）
+1.  clear() : Clears the entire screen.
+2.  clear_line() : Clears the area from the cursor's position to the end of the line.
+3.  cur_moveto(int h, int w) : Moves the cursor to the specified position (h, w).
+4.  cur_move(int dr, int ds) : Moves the cursor in a given direction by a specified distance.
+5.  cur_reset() : Resets the cursor to its default position.
+6.  cur_hide() : Hides the cursor.
+7.  cur_show() : Shows the cursor.
+8.  set_color(int front, int background) : Sets the text and background colors (8-color mode).
+9.  set_color16(int front, int background) : Sets the text and background colors (16-color mode).
+10.  set_color256(int front, int background) : Sets the text and background colors (256-color mode).
+11.  set_background_color_RGB(int R, int B, int G) : Sets the background color using RGB values.
+12.  set_front_color_RGB(int R, int B, int G) : Sets the text color using RGB values.
+13.  high_light() : Enables highlighting.
+14.  un_high_light() : Disables highlighting.
+15.  underline() : Underlines the text.
+16.  un_underline() : Removes underlining.
+17.  bright() : Enables bright text.
+18.  un_bright() : Disables bright text.
  
-- 移动光标到指定位置（Move the cursor to the specified position (h, w)）： cur_moveto(int h, int w) 函数可以将光标移动到指定的行（h）和列（w）位置。
-- 按指定方向和距离移动光标（Move the cursor in a given direction by a specified distance）： cur_move(int dr, int ds) 函数，其中 dr 表示方向， ds 表示距离。例如，可以使用 cout << _move(LEFT, 10); 来向左移动光标 10 个单位。
-- 重置光标到默认位置（Reset the cursor to its default position）： cur_reset() 函数可实现此功能。
-- 隐藏光标（Hide the cursor）： cur_hide() 函数可以隐藏光标。
-- 显示光标（Show the cursor）： cur_show() 函数可以显示光标。
+### Color Definitions
  
-### 颜色控制相关功能（Functions related to color control）
+1. 8-color definitions (including background color totals 16 colors, but it is commonly referred to as 8 colors):
+-  FRONT_BLACK = 30 : Black text.
+-  FRONT_RED = 31 : Red text.
+-  FRONT_GREEN = 32 : Green text.
+-  FRONT_YELLOW = 33 : Yellow text.
+-  FRONT_BLUE = 34 : Blue text.
+-  FRONT_PURPLE = 35 : Purple text.
+-  FRONT_DEEP_GREEN = 36 : Deep green text.
+-  FRONT_WHITE = 37 : White text.
+-  BACKGROUND_BLACK = 40 : Black background.
+-  BACKGROUND_RED = 41 : Red background.
+-  BACKGROUND_GREEN = 42 : Green background.
+-  BACKGROUND_YELLOW = 43 : Yellow background.
+-  BACKGROUND_BLUE = 44 : Blue background.
+-  BACKGROUND_PURPLE = 45 : Purple background.
+-  BACKGROUND_DEEP_GREEN = 46 : Deep green background.
+-  BACKGROUND_WHITE = 47 : White background.
+2. 16-color definitions:
+- In  set_color16 , if brightened, returns  \033[1;(CODE - 100)m .
+-  BLACK = 0 : Black.
+-  RED = 1 : Red.
+-  GREEN = 2 : Green.
+-  YELLOW = 3 : Yellow.
+-  BLUE = 4 : Blue.
+-  PURPLE = 5 : Purple.
+-  DEEP_GREEN = 6 : Deep green.
+-  WHITE = 7 : White.
+-  BRIGHT_BLACK = 8 : Bright black.
+-  BRIGHT_RED = 9 : Bright red.
+-  BRIGHT_GREEN = 10 : Bright green.
+-  BRIGHT_YELLOW = 11 : Bright yellow.
+-  BRIGHT_BLUE = 12 : Bright blue.
+-  BRIGHT_PURPLE = 13 : Bright purple.
+-  BRIGHT_DEEP_GREEN = 14 : Bright deep green.
+-  BRIGHT_WHITE = 15 : Bright white.
  
-- 启用或禁用高亮显示（Enable or disable highlighting）：分别使用 high_light() 和 un_high_light() 函数。
-- 设置文本和背景颜色（Set the text and background colors）： set_color(int front, int background) 函数可以设置文本前景色和背景色。使用时需注意在返回系统前进行重置。
-
-### 其他可以阅读源码了解
+## Instructions
  
-## 当前存在的问题（Current Issues）
+As the author is currently busy with studies and doesn't have much time to spend on this project, there may be some imperfections and the documentation is correspondingly insufficient. Over time, the author will gradually improve it in spare time from studies.
  
-### 命名问题（Naming Issues）
+## Future Plans
  
-代码的命名存在很大问题，不清晰的命名可能会导致其他开发者难以理解代码的意图，增加维护成本。
+This was originally created for other projects. If there are any issues later, I will push updates. If you use it, you can also send pull requests at any time.
  
-### 文档不足（Lack of Documentation）
+## Usage
  
-目前使用方法部分提到会在未来提供详细文档，但缺乏当前的文档说明可能会使其他开发者在尝试使用这个项目时遇到困难，不清楚如何正确调用各个函数。
+Detailed information on how to use this class will be provided in future documentation. For now, you can refer to the following example:troublesome. Just look at the source code. The function list is very clear.
  
-### 颜色支持有限（Limited Color Support）
+### Function List:
  
-目前添加到了16种颜色，对于一些需要更丰富颜色表现的场景可能不够,不过添加更多颜色支持已经在做了
+1.  clear() : Clears the entire screen.
+2.  clear_line() : Clears the area from the cursor's position to the end of the line.
+3.  cur_moveto(int h, int w) : Moves the cursor to the specified position (h, w).
+4.  cur_move(int dr, int ds) : Moves the cursor in a given direction by a specified distance.
+5.  cur_reset() : Resets the cursor to its default position.
+6.  cur_hide() : Hides the cursor.
+7.  cur_show() : Shows the cursor.
+8.  set_color(int front, int background) : Sets the text and background colors (8-color mode).
+9.  set_color16(int front, int background) : Sets the text and background colors (16-color mode).
+10.  set_color256(int front, int background) : Sets the text and background colors (256-color mode).
+11.  set_background_color_RGB(int R, int B, int G) : Sets the background color using RGB values.
+12.  set_front_color_RGB(int R, int B, int G) : Sets the text color using RGB values.
+13.  high_light() : Enables highlighting.
+14.  un_high_light() : Disables highlighting.
+15.  underline() : Underlines the text.
+16.  un_underline() : Removes underlining.
+17.  bright() : Enables bright text.
+18.  un_bright() : Disables bright text.
  
-## 关于文档的说明（Note on Documentation）
+### Color Definitions
  
-由于作者目前学业繁忙，没有很多时间花在项目上，因此可能存在一些不完善的地方，文档也相应不足，。随着时间的推移，作者会在学业之余逐步完善
+1. 8-color definitions (including background color totals 16 colors, but it is commonly referred to as 8 colors):
+-  FRONT_BLACK = 30 : Black text.
+-  FRONT_RED = 31 : Red text.
+-  FRONT_GREEN = 32 : Green text.
+-  FRONT_YELLOW = 33 : Yellow text.
+-  FRONT_BLUE = 34 : Blue text.
+-  FRONT_PURPLE = 35 : Purple text.
+-  FRONT_DEEP_GREEN = 36 : Deep green text.
+-  FRONT_WHITE = 37 : White text.
+-  BACKGROUND_BLACK = 40 : Black background.
+-  BACKGROUND_RED = 41 : Red background.
+-  BACKGROUND_GREEN = 42 : Green background.
+-  BACKGROUND_YELLOW = 43 : Yellow background.
+-  BACKGROUND_BLUE = 44 : Blue background.
+-  BACKGROUND_PURPLE = 45 : Purple background.
+-  BACKGROUND_DEEP_GREEN = 46 : Deep green background.
+-  BACKGROUND_WHITE = 47 : White background.
+2. 16-color definitions:
+- In  set_color16 , if brightened, returns  \033[1;(CODE - 100)m .
+-  BLACK = 0 : Black.
+-  RED = 1 : Red.
+-  GREEN = 2 : Green.
+-  YELLOW = 3 : Yellow.
+-  BLUE = 4 : Blue.
+-  PURPLE = 5 : Purple.
+-  DEEP_GREEN = 6 : Deep green.
+-  WHITE = 7 : White.
+-  BRIGHT_BLACK = 8 : Bright black.
+-  BRIGHT_RED = 9 : Bright red.
+-  BRIGHT_GREEN = 10 : Bright green.
+-  BRIGHT_YELLOW = 11 : Bright yellow.
+-  BRIGHT_BLUE = 12 : Bright blue.
+-  BRIGHT_PURPLE = 13 : Bright purple.
+-  BRIGHT_DEEP_GREEN = 14 : Bright deep green.
+-  BRIGHT_WHITE = 15 : Bright white.
  
-## 未来计划（Future Plans）
+## Instructions
  
-- 加入其他的 ANSI 转义字符功能。
-- 解决命名问题，提高代码的可读性和可维护性。
-- 完善文档，提供详细的使用说明和示例。
-- 继续扩展颜色支持，以满足更多的需求。
+As the author is currently busy with studies and doesn't have much time to spend on this project, there may be some imperfections and the documentation is correspondingly insufficient. Over time, the author will gradually improve it in spare time from studies.
  
-## 使用方法（Usage）
+## Future Plans
  
-关于如何使用这个类的详细信息将在未来的文档中提供。
+This was originally created for other projects. If there are any issues later, I will push updates. If you use it, you can also send pull requests at any time.
  
-## 贡献（Contributing）
+## Usage
  
-欢迎贡献。如果你发现任何命名问题或有改进建议，请随时提交拉取请求。
+Detailed information on how to use this class will be provided in future documentation. For now, you can refer to the following example:
